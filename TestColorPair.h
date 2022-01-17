@@ -1,5 +1,3 @@
-#include <iostream>
-#include <assert.h>
 #include "ColorPairHandler.h"
 
 class TestColorPair
