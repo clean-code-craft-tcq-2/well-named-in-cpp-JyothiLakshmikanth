@@ -14,15 +14,15 @@ namespace TelCoColorCoder
         "Blue", "Orange", "Green", "Brown", "Slate"
     };
 
-int getNumberOfMajorColors()
-{
+    int getNumberOfMajorColors()
+   {
 	return sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
-}
+   }
 
-int getNumberOfMinorColors()
-{
+   int getNumberOfMinorColors()
+  {
 	return sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
-}
+  }
 
 class ColorPair {
  private:
