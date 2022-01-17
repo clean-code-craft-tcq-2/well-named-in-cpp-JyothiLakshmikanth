@@ -1,10 +1,10 @@
 #include "TestColorPair.h"
 
 void TestColorPair::testNumberToPair(int pairNumber,
-    TelCoColorCoder::MajorColor expectedMajor,
-    TelCoColorCoder::MinorColor expectedMinor)
+    ::TelCoColorCoder::MajorColor expectedMajor,
+    ::TelCoColorCoder::MinorColor expectedMinor)
 {
-    TelCoColorCoder::ColorPair colorPair =
+   ::TelCoColorCoder::ColorPair colorPair =
         m_colorPairHandler.GetColorFromPairNumber(pairNumber);
     std::cout << "Got pair " << colorPair.ToString() << std::endl;
     assert(colorPair.getMajor() == expectedMajor);
@@ -12,8 +12,8 @@ void TestColorPair::testNumberToPair(int pairNumber,
 }
 
 void TestColorPair::testPairToNumber(
-    TelCoColorCoder::MajorColor major,
-    TelCoColorCoder::MinorColor minor,
+    ::TelCoColorCoder::MajorColor major,
+    ::TelCoColorCoder::MinorColor minor,
     int expectedPairNumber)
 {
     int pairNumber = m_colorPairHandler.GetPairNumberFromColor(major, minor);
