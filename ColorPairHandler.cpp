@@ -1,7 +1,5 @@
 #include "ColorPairHandler.h"
 
-using namespace TelCoColorCoder;
-
 ColorPair ColorPairHandler::GetColorFromPairNumber(int pairNumber) {
     int zeroBasedPairNumber = pairNumber - 1;
     MajorColor majorColor = 
