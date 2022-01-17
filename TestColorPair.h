@@ -2,8 +2,6 @@
 #include <assert.h>
 #include "ColorPairHandler.h"
 
-//using namespace TelCoColorCoder;
-
 class TestColorPair
 {
 	public:
