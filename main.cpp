@@ -2,8 +2,6 @@
 #include <assert.h>
 #include "TestColorPair.h"
 
-namespace TelCoColorCoder{
-
 int main() {
 	TestColorPair testColorPair;
     testColorPair.testNumberToPair(4, ::TelCoColorCoder::WHITE, TelCoColorCoder::BROWN);
@@ -13,5 +11,4 @@ int main() {
     testColorPair.testPairToNumber(::TelCoColorCoder::VIOLET, TelCoColorCoder::SLATE, 25);
 
     return 0;
-}
 }
