@@ -3,8 +3,6 @@
 #include "ColorPairHandler.h"
 #include "ColorInfos.h"
 
-using namespace TelCoColorCoder;
-
 class TestColorPair
 {
 	public:
