@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ColorInfos.h"
 
-using namespace TelCoColorCoder;
+//using namespace TelCoColorCoder;
 
 class ColorPairHandler
 {
