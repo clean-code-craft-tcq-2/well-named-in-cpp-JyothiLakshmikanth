@@ -10,5 +10,5 @@
 }
 
 int ColorPairHandler::GetPairNumberFromColor(::TelCoColorCoder::MajorColor major, ::TelCoColorCoder::MinorColor minor) {
-    return major * getNumberOfMinorColors() + minor + 1;
+    return major * ::TelCoColorCoder::getNumberOfMinorColors() + minor + 1;
 }
