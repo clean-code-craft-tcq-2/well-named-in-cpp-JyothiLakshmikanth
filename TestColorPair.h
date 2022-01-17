@@ -1,6 +1,9 @@
 #include <iostream>
 #include <assert.h>
 #include "ColorPairHandler.h"
+#include "ColorInfos.h"
+
+using namespace TelCoColorCoder;
 
 class TestColorPair
 {
