@@ -7,5 +7,5 @@ class ColorPairHandler
 	ColorPairHandler();
 	~ColorPairHandler();
 	::TelCoColorCoder::ColorPair GetColorFromPairNumber(int pairNumber);
-	int GetPairNumberFromColor(MajorColor major, MinorColor minor);
+	int GetPairNumberFromColor(::TelCoColorCoder::MajorColor major, ::TelCoColorCoder::MinorColor minor);
 };
