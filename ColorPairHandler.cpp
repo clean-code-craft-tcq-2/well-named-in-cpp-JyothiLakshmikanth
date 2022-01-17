@@ -3,9 +3,9 @@
 ::TelCoColorCoder::ColorPair ColorPairHandler::GetColorFromPairNumber(int pairNumber) {
     int zeroBasedPairNumber = pairNumber - 1;
    ::TelCoColorCoder::MajorColor majorColor = 
-        (::TelCoColorCoder::MajorColor)(zeroBasedPairNumber / ::TelCoColorCoder::getNumberOfMinorColors());
+        (::TelCoColorCoder::MajorColor)(zeroBasedPairNumber / (::TelCoColorCoder::getNumberOfMinorColors()));
     ::TelCoColorCoder::MinorColor minorColor =
-        (::TelCoColorCoder::MinorColor)(zeroBasedPairNumber % ::TelCoColorCoder::getNumberOfMinorColors());
+        (::TelCoColorCoder::MinorColor)(zeroBasedPairNumber % (::TelCoColorCoder::getNumberOfMinorColors()));
     return ::TelCoColorCoder::ColorPair(majorColor, minorColor);
 }
 
