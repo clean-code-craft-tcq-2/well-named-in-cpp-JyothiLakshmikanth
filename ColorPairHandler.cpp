@@ -4,15 +4,15 @@
 {
     int zeroBasedPairNumber = pairNumber - 1;
    ::TelCoColorCoder::MajorColor majorColor = 
-        (::TelCoColorCoder::MajorColor)(zeroBasedPairNumber / (TelCoColorCoder::getNumberOfMinorColors()));
+        (::TelCoColorCoder::MajorColor)(zeroBasedPairNumber / (TelCoColorCoder::numberOfMinorColors));
     ::TelCoColorCoder::MinorColor minorColor =
-        (::TelCoColorCoder::MinorColor)(zeroBasedPairNumber % (TelCoColorCoder::getNumberOfMinorColors()));
+        (::TelCoColorCoder::MinorColor)(zeroBasedPairNumber % (TelCoColorCoder::numberOfMinorColors));
     return ::TelCoColorCoder::ColorPair(majorColor, minorColor);
 }
 
 int ColorPairHandler::GetPairNumberFromColor(::TelCoColorCoder::MajorColor major, ::TelCoColorCoder::MinorColor minor)
 {
-    return major * (TelCoColorCoder::getNumberOfMinorColors()) + minor + 1;
+    return major * (TelCoColorCoder::numberOfMinorColors) + minor + 1;
 }
 
 void ColorPairHandler::testNumberToPair(int pairNumber, ::TelCoColorCoder::MajorColor expectedMajor, ::TelCoColorCoder::MinorColor expectedMinor)
