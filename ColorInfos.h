@@ -16,12 +16,12 @@ namespace TelCoColorCoder
 
     int getNumberOfMajorColors()
    {
-	return sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
+	return (sizeof(MajorColorNames) / sizeof(MajorColorNames[0]));
    }
 
    int getNumberOfMinorColors()
   {
-	return sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
+	return (sizeof(MinorColorNames) / sizeof(MinorColorNames[0]));
   }
 
 class ColorPair {
