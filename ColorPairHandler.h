@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ColorInfos.h"
-using namespace TelCoColorCoder{getNumberOfMinorColors();};
+using namespace TelCoColorCoder;
 class ColorPairHandler
 {
 	public:
