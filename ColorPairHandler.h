@@ -34,11 +34,12 @@ int ColorPairHandler::GetPairNumberFromColor(TelCoColorCoder::MajorColor major, 
 
 ColorPairHandler::T_ColorPairMap ColorPairHandler::GetTheComibination(TelCoColorCoder::MajorColor majorColor)
 {
-    T_ColorPairMap colorPairMap;
+    ColorPairHandler::T_ColorPairMap colorPairMap;
     for(int i = 0; i< TelCoColorCoder::numberOfMinorColors; ++i)
     {
-        TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i-1) % (TelCoColorCoder::numberOfMinorColors));
+        TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i) % (TelCoColorCoder::numberOfMinorColors));
         int pairNumber = GetPairNumberFromColor(majorColor, minorColor);
         colorPairMap.insert({pairNumber, TelCoColorCoder::ColorPair(majorColor, minorColor)});
     }
+    return colorPairMap;
 }
