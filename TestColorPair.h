@@ -45,6 +45,6 @@ void TestColorPair::printTheComibination(TelCoColorCoder::MajorColor major)
     for(;pairIt!= pair.end();++pairIt)
     {
         TelCoColorCoder::ColorPair colorPair = pairIt->second;
-        std::cout << pairIt->first <<" "<< colorPair.ToString().c_str() << std::endl;
+        std::cout << pairIt->first<<" " << colorPair.ToString().c_str() <<std::endl;
     }
 }
