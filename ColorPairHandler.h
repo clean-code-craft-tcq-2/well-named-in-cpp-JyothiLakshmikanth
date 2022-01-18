@@ -2,6 +2,7 @@
 #define COLORPAIRHANDLER_H_
 
 #include <iostream>
+#include <map>
 #include "ColorInfos.h"
 
 class ColorPairHandler
@@ -10,8 +11,11 @@ class ColorPairHandler
     ColorPairHandler(){}
    ~ColorPairHandler(){}
 
+    typedef ::std::map<int,TelCoColorCoder::ColorPair> T_ColorPairMap;
+
     TelCoColorCoder::ColorPair GetColorFromPairNumber(int pairNumber);
     int GetPairNumberFromColor(TelCoColorCoder::MajorColor major, TelCoColorCoder::MinorColor minor) ;
+    T_ColorPairMap GetTheComibination(TelCoColorCoder::MajorColor majorColor);
 
 };
 #endif
@@ -26,4 +30,15 @@ TelCoColorCoder::ColorPair ColorPairHandler::GetColorFromPairNumber(int pairNumb
 int ColorPairHandler::GetPairNumberFromColor(TelCoColorCoder::MajorColor major, TelCoColorCoder::MinorColor minor)
 {
     return (major * (TelCoColorCoder::numberOfMinorColors) + minor + 1);
+}
+
+ColorPairHandler::T_ColorPairMap ColorPairHandler::GetTheComibination(TelCoColorCoder::MajorColor majorColor)
+{
+    T_ColorPairMap colorPairMap;
+    for(int i = 0; i< TelCoColorCoder::numberOfMinorColors; ++i)
+    {
+        TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i-1) % (TelCoColorCoder::numberOfMinorColors));
+        int pairNumber = GetPairNumberFromColor(majorColor, minorColor);
+        colorPairMap.insert({pairNumber, TelCoColorCoder::ColorPair(majorColor, minorColor)});
+    }
 }
