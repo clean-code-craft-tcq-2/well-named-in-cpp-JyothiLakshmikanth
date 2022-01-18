@@ -11,5 +11,6 @@ int main()
     test.testPairToNumber(TelCoColorCoder::BLACK, TelCoColorCoder::ORANGE, 12);
     test.testPairToNumber(TelCoColorCoder::VIOLET, TelCoColorCoder::SLATE, 25);
 
+    test.printTheComibination(TelCoColorCoder::BLACK);
     return 0;
 }
