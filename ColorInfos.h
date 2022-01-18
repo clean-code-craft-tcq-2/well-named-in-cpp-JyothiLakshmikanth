@@ -1,5 +1,7 @@
-#include <iostream>
-#include <assert.h>
+#ifndef COLORINFOS_H_
+#define COLORINFOS_H_
+#include <string>
+using namespace std;
 
 namespace TelCoColorCoder
 {
@@ -42,3 +44,4 @@ class ColorPair {
      }
  };
 }
+#endif
