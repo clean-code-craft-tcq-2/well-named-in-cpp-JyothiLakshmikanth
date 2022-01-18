@@ -1,14 +1,15 @@
 #include <iostream>
 #include <assert.h>
-#include "ColorPairHandler.h"
+#include "TestColorPair.h"
 
-int main() {
-	ColorPairHandler colorPairHandler;
-    colorPairHandler.testNumberToPair(4, ::TelCoColorCoder::WHITE, TelCoColorCoder::BROWN);
-    colorPairHandler.testNumberToPair(5, ::TelCoColorCoder::WHITE, TelCoColorCoder::SLATE);
+int main()
+{
+    TestColorPair test;
+    test.testNumberToPair(4, TelCoColorCoder::WHITE, TelCoColorCoder::BROWN);
+    test.testNumberToPair(5, TelCoColorCoder::WHITE, TelCoColorCoder::SLATE);
 
-    colorPairHandler.testPairToNumber(::TelCoColorCoder::BLACK, TelCoColorCoder::ORANGE, 12);
-    colorPairHandler.testPairToNumber(::TelCoColorCoder::VIOLET, TelCoColorCoder::SLATE, 25);
+    test.testPairToNumber(TelCoColorCoder::BLACK, TelCoColorCoder::ORANGE, 12);
+    test.testPairToNumber(TelCoColorCoder::VIOLET, TelCoColorCoder::SLATE, 25);
 
     return 0;
 }
