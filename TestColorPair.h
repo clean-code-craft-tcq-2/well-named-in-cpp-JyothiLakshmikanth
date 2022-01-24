@@ -4,7 +4,6 @@
 #include <iostream>
 #include <assert.h>
 #include <map>
-#include "ColorInfos.h"
 #include "ColorPairHandler.h"
 class TestColorPair
  {
