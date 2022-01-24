@@ -12,7 +12,6 @@ class TestColorPair
     TestColorPair(){}
    ~TestColorPair(){}
 
-    typedef ::std::map<int,TelCoColorCoder::ColorPair> T_ColorPairMap;
     void testNumberToPair(int pairNumber, TelCoColorCoder::MajorColor expectedMajor,TelCoColorCoder::MinorColor expectedMinor);
     void testPairToNumber( TelCoColorCoder::MajorColor major, TelCoColorCoder::MinorColor minor, int expectedPairNumber);
     void printTheComibination( TelCoColorCoder::MajorColor major);
@@ -35,16 +34,4 @@ void TestColorPair::testPairToNumber(TelCoColorCoder::MajorColor major, TelCoCol
     int pairNumber = colorPairHandler.GetPairNumberFromColor(major, minor);
     std::cout << "Got pair number " << pairNumber << std::endl;
     assert(pairNumber == expectedPairNumber);
-}
-
-void TestColorPair::printTheComibination(TelCoColorCoder::MajorColor major)
-{
-    ColorPairHandler colorPairHandler;
-    T_ColorPairMap pair = colorPairHandler.GetTheComibination(major);
-    T_ColorPairMap::const_iterator pairIt = pair.begin();
-    for(;pairIt!= pair.end();++pairIt)
-    {
-        TelCoColorCoder::ColorPair colorPair = pairIt->second;
-        std::cout << pairIt->first<<" " << colorPair.ToString().c_str() <<std::endl;
-    }
 }
