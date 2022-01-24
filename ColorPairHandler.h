@@ -11,8 +11,6 @@ class ColorPairHandler
     ColorPairHandler(){}
    ~ColorPairHandler(){}
 
-    typedef ::std::map<int,TelCoColorCoder::ColorPair> T_ColorPairMap;
-
     TelCoColorCoder::ColorPair GetColorFromPairNumber(int pairNumber);
     int GetPairNumberFromColor(TelCoColorCoder::MajorColor major, TelCoColorCoder::MinorColor minor) ;
     T_ColorPairMap GetTheComibination(TelCoColorCoder::MajorColor majorColor);
