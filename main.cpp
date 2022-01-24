@@ -4,7 +4,7 @@
 #include "TestColorPair.h"
 
 typedef ::std::map<int,TelCoColorCoder::ColorPair> T_ColorPairMap;
-T_ColorPairMap getTheCombination(TelCoColorCoder::MajorColor major)
+T_ColorPairMap getTheCombination(TelCoColorCoder::MajorColor majorColor)
 {
     T_ColorPairMap colorPairMap;
     for(int i = 0; i < TelCoColorCoder::numberOfMinorColors ; ++i)
