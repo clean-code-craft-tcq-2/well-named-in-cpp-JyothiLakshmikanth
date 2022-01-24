@@ -13,7 +13,6 @@ class ColorPairHandler
 
     TelCoColorCoder::ColorPair GetColorFromPairNumber(int pairNumber);
     int GetPairNumberFromColor(TelCoColorCoder::MajorColor major, TelCoColorCoder::MinorColor minor) ;
-    T_ColorPairMap GetTheComibination(TelCoColorCoder::MajorColor majorColor);
 
 };
 #endif
