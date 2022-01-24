@@ -1,7 +1,6 @@
 #include <iostream>
 #include <assert.h>
 #include "ColorInfos.h"
-#include "ColorPairHandler.h"
 #include "TestColorPair.h"
 
 typedef ::std::map<int,TelCoColorCoder::ColorPair> T_ColorPairMap;
@@ -10,9 +9,8 @@ T_ColorPairMap getTheCombination(TelCoColorCoder::MajorColor majorColor)
     T_ColorPairMap colorPairMap;
     for(int i = 0; i < TelCoColorCoder::numberOfMinorColors ; ++i)
     {
-        ColorPairHandler colorPairHandler;
         TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i-1) % (TelCoColorCoder::numberOfMinorColors));
-        int pairNumber = colorPairHandler.GetPairNumberFromColor(majorColor, minorColor);
+        int pairNumber = (majorColor * (TelCoColorCoder::numberOfMinorColors) + minorColor + 1);
         colorPairMap.insert({pairNumber, TelCoColorCoder::ColorPair(majorColor, minorColor)});) % (TelCoColorCoder::numberOfMinorColors));
     }
     return colorPairMap;
