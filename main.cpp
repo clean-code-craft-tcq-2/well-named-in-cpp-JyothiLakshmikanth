@@ -32,7 +32,7 @@ void printManual()
     T_ColorPairMap::const_iterator colorMapIt = colorMap.begin();
     for(; colorMapIt != colorMap.end(); ++colorMapIt)
     {
-         TelCoColorCoder::ColorPair colorPair = colorMapIt->second
+         TelCoColorCoder::ColorPair colorPair = colorMapIt->second;
          ::std::cout<<colorMapIt->first<<" "<<colorPair.ToString().c_str()<<std::endl;
     }
 }
