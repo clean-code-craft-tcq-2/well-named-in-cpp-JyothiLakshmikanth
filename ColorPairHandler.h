@@ -31,15 +31,3 @@ int ColorPairHandler::GetPairNumberFromColor(TelCoColorCoder::MajorColor major, 
 {
     return (major * (TelCoColorCoder::numberOfMinorColors) + minor + 1);
 }
-
-ColorPairHandler::T_ColorPairMap ColorPairHandler::GetTheComibination(TelCoColorCoder::MajorColor majorColor)
-{
-    ColorPairHandler::T_ColorPairMap colorPairMap;
-    for(int i = 0; i< TelCoColorCoder::numberOfMinorColors; ++i)
-    {
-        TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i) % (TelCoColorCoder::numberOfMinorColors));
-        int pairNumber = GetPairNumberFromColor(majorColor, minorColor);
-        colorPairMap.insert({pairNumber, TelCoColorCoder::ColorPair(majorColor, minorColor)});
-    }
-    return colorPairMap;
-}
