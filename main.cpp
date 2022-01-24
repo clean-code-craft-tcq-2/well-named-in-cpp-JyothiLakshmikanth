@@ -11,7 +11,7 @@ T_ColorPairMap getTheCombination(TelCoColorCoder::MajorColor majorColor)
     {
         TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i-1) % (TelCoColorCoder::numberOfMinorColors));
         int pairNumber = (majorColor * (TelCoColorCoder::numberOfMinorColors) + minorColor + 1);
-        colorPairMap.insert({pairNumber, TelCoColorCoder::ColorPair(majorColor, minorColor)});) % (TelCoColorCoder::numberOfMinorColors));
+        colorPairMap.insert({pairNumber, TelCoColorCoder::ColorPair(majorColor, minorColor)});
     }
     return colorPairMap;
 }
@@ -32,7 +32,7 @@ void printManual()
     T_ColorPairMap::const_iterator colorMapIt = colorMap.begin();
     for(; colorMapIt != colorMap.end(); ++colorMapIt)
     {
-         ColorPair colorPair = colorMapIt->second
+         TelCoColorCoder::ColorPair colorPair = colorMapIt->second
          ::std::cout<<colorMapIt->first<<" "<<colorPair.ToString().c_str()<<std::endl;
     }
 }
