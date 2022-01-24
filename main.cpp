@@ -4,12 +4,12 @@
 #include "TestColorPair.h"
 
 typedef ::std::map<int,TelCoColorCoder::ColorPair> T_ColorPairMap;
-T_ColorPairMap getTheCombination(TelCoColorCoder::MajorColor majorColor)
+T_ColorPairMap getTheCombination(TelCoColorCoder::MajorColorNames majorColor)
 {
     T_ColorPairMap colorPairMap;
     for(int i = 0; i < TelCoColorCoder::numberOfMinorColors ; ++i)
     {
-        TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i-1) % (TelCoColorCoder::numberOfMinorColors));
+        TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i) % (TelCoColorCoder::numberOfMinorColors));
         int pairNumber = (majorColor * (TelCoColorCoder::numberOfMinorColors) + minorColor + 1);
         colorPairMap.insert({pairNumber, TelCoColorCoder::ColorPair(majorColor, minorColor)});
     }
@@ -21,7 +21,7 @@ T_ColorPairMap getColorPairMap()
     T_ColorPairMap colorMap;
     for(int i=0;i<TelCoColorCoder::numberOfMajorColors ;++i)
     {
-        colorMap = getTheCombination(TelCoColorCoder::MajorColorNames[i]);
+        colorMap = getTheCombination((TelCoColorCoder::MajorColorNames)(i)%(TelCoColorCoder::numberOfMajorColors));
     }
     return colorMap;
 }
