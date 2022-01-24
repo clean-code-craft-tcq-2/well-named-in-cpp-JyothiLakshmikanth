@@ -21,7 +21,7 @@ T_ColorPairMap getColorPairMap()
     T_ColorPairMap colorMap;
     for(int i=0;i<TelCoColorCoder::numberOfMajorColors ;++i)
     {
-        colorMap = getTheCombination((TelCoColorCoder::MajorColorNames)(i)%(TelCoColorCoder::numberOfMajorColors));
+        colorMap = getTheCombination((TelCoColorCoder::MajorColorNames)((i)%(TelCoColorCoder::numberOfMajorColors)));
     }
     return colorMap;
 }
