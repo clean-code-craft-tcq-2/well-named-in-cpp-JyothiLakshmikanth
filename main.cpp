@@ -1,36 +1,36 @@
 #include <iostream>
 #include <assert.h>
+#include <map>
 #include "ColorInfos.h"
 #include "TestColorPair.h"
 
 typedef ::std::map<int,TelCoColorCoder::ColorPair> T_ColorPairMap;
-T_ColorPairMap getTheCombination(TelCoColorCoder::MajorColorNames majorColor)
+T_ColorPairMap colorPairMap;
+void updatecolorMap(TelCoColorCoder::MajorColor majorColor)
 {
-    T_ColorPairMap colorPairMap;
     for(int i = 0; i < TelCoColorCoder::numberOfMinorColors ; ++i)
     {
         TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i) % (TelCoColorCoder::numberOfMinorColors));
         int pairNumber = (majorColor * (TelCoColorCoder::numberOfMinorColors) + minorColor + 1);
         colorPairMap.insert({pairNumber, TelCoColorCoder::ColorPair(majorColor, minorColor)});
     }
-    return colorPairMap;
 }
 
-T_ColorPairMap getColorPairMap()
+void getColorPairMap()
 {
     T_ColorPairMap colorMap;
     for(int i=0;i<TelCoColorCoder::numberOfMajorColors ;++i)
     {
-        colorMap = getTheCombination((TelCoColorCoder::MajorColorNames)((i)%(TelCoColorCoder::numberOfMajorColors)));
+        TelCoColorCoder::MajorColor majorcolor = (TelCoColorCoder::MajorColor)((i) % (TelCoColorCoder::numberOfMajorColors));
+        updatecolorMap(majorcolor);
     }
-    return colorMap;
 }
 
 void printManual()
 {
-    T_ColorPairMap colorMap = getColorPairMap();
-    T_ColorPairMap::const_iterator colorMapIt = colorMap.begin();
-    for(; colorMapIt != colorMap.end(); ++colorMapIt)
+    getColorPairMap();
+    T_ColorPairMap::const_iterator colorMapIt = colorPairMap.begin();
+    for(; colorMapIt != colorPairMap.end(); ++colorMapIt)
     {
          TelCoColorCoder::ColorPair colorPair = colorMapIt->second;
          ::std::cout<<colorMapIt->first<<" "<<colorPair.ToString().c_str()<<std::endl;
