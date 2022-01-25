@@ -1,84 +1,51 @@
 #include <iostream>
 #include <assert.h>
+#include <map>
+#include "ColorInfos.h"
+#include "TestColorPair.h"
 
-namespace TelCoColorCoder
+typedef ::std::map<int,TelCoColorCoder::ColorPair> T_ColorPairMap;
+T_ColorPairMap colorPairMap;
+void updatecolorMap(TelCoColorCoder::MajorColor majorColor)
 {
-    enum MajorColor {WHITE, RED, BLACK, YELLOW, VIOLET};
-    enum MinorColor {BLUE, ORANGE, GREEN, BROWN, SLATE};
-
-    const char* MajorColorNames[] = {
-        "White", "Red", "Black", "Yellow", "Violet"
-    };
-    int numberOfMajorColors =
-        sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
-    const char* MinorColorNames[] = {
-        "Blue", "Orange", "Green", "Brown", "Slate"
-    };
-    int numberOfMinorColors =
-        sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
-
-    class ColorPair {
-        private:
-            MajorColor majorColor;
-            MinorColor minorColor;
-        public:
-            ColorPair(MajorColor major, MinorColor minor):
-                majorColor(major), minorColor(minor)
-            {}
-            MajorColor getMajor() {
-                return majorColor;
-            }
-            MinorColor getMinor() {
-                return minorColor;
-            }
-            std::string ToString() {
-                std::string colorPairStr = MajorColorNames[majorColor];
-                colorPairStr += " ";
-                colorPairStr += MinorColorNames[minorColor];
-                return colorPairStr;
-            }
-    };
-
-    ColorPair GetColorFromPairNumber(int pairNumber) {
-        int zeroBasedPairNumber = pairNumber - 1;
-        MajorColor majorColor = 
-            (MajorColor)(zeroBasedPairNumber / numberOfMinorColors);
-        MinorColor minorColor =
-            (MinorColor)(zeroBasedPairNumber % numberOfMinorColors);
-        return ColorPair(majorColor, minorColor);
-    }
-    int GetPairNumberFromColor(MajorColor major, MinorColor minor) {
-        return major * numberOfMinorColors + minor + 1;
+    for(int i = 0; i < TelCoColorCoder::numberOfMinorColors ; ++i)
+    {
+        TelCoColorCoder::MinorColor minorColor = (TelCoColorCoder::MinorColor)((i) % (TelCoColorCoder::numberOfMinorColors));
+        int pairNumber = (majorColor * (TelCoColorCoder::numberOfMinorColors) + minorColor + 1);
+        colorPairMap.insert({pairNumber, TelCoColorCoder::ColorPair(majorColor, minorColor)});
     }
 }
 
-void testNumberToPair(int pairNumber,
-    TelCoColorCoder::MajorColor expectedMajor,
-    TelCoColorCoder::MinorColor expectedMinor)
+void getColorPairMap()
 {
-    TelCoColorCoder::ColorPair colorPair =
-        TelCoColorCoder::GetColorFromPairNumber(pairNumber);
-    std::cout << "Got pair " << colorPair.ToString() << std::endl;
-    assert(colorPair.getMajor() == expectedMajor);
-    assert(colorPair.getMinor() == expectedMinor);
+    T_ColorPairMap colorMap;
+    for(int i=0;i<TelCoColorCoder::numberOfMajorColors ;++i)
+    {
+        TelCoColorCoder::MajorColor majorcolor = (TelCoColorCoder::MajorColor)((i) % (TelCoColorCoder::numberOfMajorColors));
+        updatecolorMap(majorcolor);
+    }
 }
 
-void testPairToNumber(
-    TelCoColorCoder::MajorColor major,
-    TelCoColorCoder::MinorColor minor,
-    int expectedPairNumber)
+void printManual()
 {
-    int pairNumber = TelCoColorCoder::GetPairNumberFromColor(major, minor);
-    std::cout << "Got pair number " << pairNumber << std::endl;
-    assert(pairNumber == expectedPairNumber);
+    getColorPairMap();
+    T_ColorPairMap::const_iterator colorMapIt = colorPairMap.begin();
+    for(; colorMapIt != colorPairMap.end(); ++colorMapIt)
+    {
+         TelCoColorCoder::ColorPair colorPair = colorMapIt->second;
+         ::std::cout<<colorMapIt->first<<" "<<colorPair.ToString().c_str()<<std::endl;
+    }
 }
 
-int main() {
-    testNumberToPair(4, TelCoColorCoder::WHITE, TelCoColorCoder::BROWN);
-    testNumberToPair(5, TelCoColorCoder::WHITE, TelCoColorCoder::SLATE);
+int main()
+{
+    printManual();
+    TestColorPair test;
+    test.testNumberToPair(4, TelCoColorCoder::WHITE, TelCoColorCoder::BROWN);
+    test.testNumberToPair(5, TelCoColorCoder::WHITE, TelCoColorCoder::SLATE);
 
-    testPairToNumber(TelCoColorCoder::BLACK, TelCoColorCoder::ORANGE, 12);
-    testPairToNumber(TelCoColorCoder::VIOLET, TelCoColorCoder::SLATE, 25);
+    test.testPairToNumber(TelCoColorCoder::BLACK, TelCoColorCoder::ORANGE, 12);
+    test.testPairToNumber(TelCoColorCoder::VIOLET, TelCoColorCoder::SLATE, 25);
 
     return 0;
 }
